@@ -1,0 +1,8 @@
+<div class="container">
+    <h1>Welcome To My-Weather</h1>
+    <input type="text" name="city" [(ngModel)]="cityName"> <br>
+    <button (click)="handle($event)">Click Me</button>
+    <ng-template [ngIf]="isActive">
+        <h1>ACTIVE CITY: {{ cityName }}</h1>
+    </ng-template>
+</div>

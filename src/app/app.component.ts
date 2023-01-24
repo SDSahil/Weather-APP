@@ -7,10 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public isActive: Boolean = false;
+  public cityName: string = '';
   /**
    * handle
    */
   public handle(event?) {
-    this.isActive = true;
+    this.isActive = !this.isActive;
   }
 }
