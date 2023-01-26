@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { lastValueFrom as toPromise } from "rxjs";
+import { HTTPService } from './services/http.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,60 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public isActive: Boolean = false;
   public cityName: string = '';
+  public currCity: string = '';
+  public currTemp: string = '';
+  public currDesc: string = '';
+  public temp: string = '';
+  public desc: string = '';
+
+  constructor(private httpService: HTTPService) { }
+
+  async ngOnInit() {
+    this.currCity = 'mumbai';
+    const weatherData = await this.getWeatherData(this.currCity);
+    this.currTemp = weatherData?.main?.temp;
+    this.currDesc = weatherData?.weather[0]?.description;
+  }
+
+  /**
+   * getLocation
+   */
+  public getLocation() {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
+  }
+
+  /**
+   * getWeatherData
+   */
+  public getWeatherData(city: string) {
+    const apiKey = "69c0d37d33e433e8ddbc3bb12ed00f41";
+    const unit = "metric";
+
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=" + unit;
+
+    return toPromise(this.httpService.get(url));
+  }
   /**
    * handle
    */
-  public handle(event?) {
-    this.isActive = !this.isActive;
+  public async handle(event?) {
+    if (this.cityName) {
+      const weatherData = await this.getWeatherData(this.cityName);
+      console.log(weatherData);
+      this.temp = weatherData?.main?.temp;
+      this.desc = weatherData?.weather[0]?.description;
+      this.isActive = true;
+    } else {
+      this.isActive = false
+      alert('Enter city');
+    }
   }
 }

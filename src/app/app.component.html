@@ -1,8 +1,20 @@
 <div class="container">
-    <h1>Welcome To My-Weather</h1>
-    <input type="text" name="city" [(ngModel)]="cityName"> <br>
-    <button (click)="handle($event)">Click Me</button>
-    <ng-template [ngIf]="isActive">
-        <h1>ACTIVE CITY: {{ cityName }}</h1>
-    </ng-template>
+    <div class="heading">
+        <h1>Welcome To My-Weather</h1>
+    </div>
+    <div class="content">
+        <div class="col1">
+            <ng-template [ngIf]="true">
+                <weather [temp]="currTemp" [cityName]="currCity" [desc]="currDesc"></weather>
+            </ng-template>
+        </div>
+        <span class="separator"></span>
+        <div class="col1">
+            <input type="text" name="city" [(ngModel)]="cityName" (keydown.enter)="handle($event)"> &nbsp;
+            <button (click)="handle($event)">Click Me</button>
+            <ng-template [ngIf]="isActive">
+                <weather [temp]="temp" [cityName]="cityName" [desc]="desc"></weather>
+            </ng-template>
+        </div>
+    </div>
 </div>

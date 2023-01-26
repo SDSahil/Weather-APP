@@ -3,13 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { HttpClientModule } from "@angular/common/http";
+import { WeatherDetails } from "./weather/weather.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WeatherDetails
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, FormsModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
