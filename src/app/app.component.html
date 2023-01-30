@@ -5,7 +5,7 @@
     <div class="content">
         <div class="col1">
             <ng-template [ngIf]="true">
-                <weather [temp]="currTemp" [cityName]="currCity" [desc]="currDesc"></weather>
+                <weather [temp]="currTemp" [cityName]="currCity" [desc]="currDesc" [weatherInfo]="currWeatherInfo"></weather>
             </ng-template>
         </div>
         <span class="separator"></span>
@@ -13,7 +13,7 @@
             <input type="text" name="city" [(ngModel)]="cityName" (keydown.enter)="handle($event)"> &nbsp;
             <button (click)="handle($event)">Click Me</button>
             <ng-template [ngIf]="isActive">
-                <weather [temp]="temp" [cityName]="cityName" [desc]="desc"></weather>
+                <weather [temp]="temp" [cityName]="cityName" [desc]="desc" [weatherInfo]="weatherInfo"></weather>
             </ng-template>
         </div>
     </div>

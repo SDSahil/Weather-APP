@@ -10,4 +10,5 @@ export class WeatherDetails {
     @Input() cityName: string;
     @Input() temp: string;
     @Input() desc: string;
+    @Input() weatherInfo: any;
 }

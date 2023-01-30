@@ -15,6 +15,8 @@ export class AppComponent {
   public currDesc: string = '';
   public temp: string = '';
   public desc: string = '';
+  public weatherInfo: any = {};
+  public currWeatherInfo: any = {};
 
   constructor(private httpService: HTTPService) { }
 
@@ -23,6 +25,10 @@ export class AppComponent {
     const weatherData = await this.getWeatherData(this.currCity);
     this.currTemp = weatherData?.main?.temp;
     this.currDesc = weatherData?.weather[0]?.description;
+
+    this.currWeatherInfo.temp = weatherData?.main?.temp;
+    this.currWeatherInfo.desc = weatherData?.weather[0]?.description;
+    this.currWeatherInfo.cityName = this.currCity;
   }
 
   /**
@@ -60,6 +66,10 @@ export class AppComponent {
       console.log(weatherData);
       this.temp = weatherData?.main?.temp;
       this.desc = weatherData?.weather[0]?.description;
+
+      this.weatherInfo.temp = weatherData?.main?.temp;
+      this.weatherInfo.desc = weatherData?.weather[0]?.description;
+      this.weatherInfo.cityName = this.cityName;
       this.isActive = true;
     } else {
       this.isActive = false
