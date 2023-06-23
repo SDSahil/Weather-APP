@@ -1,0 +1,59 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    color: #ffffff;
+    width: 40vw;
+    height: 70vh;
+    border-radius: 20px;
+
+    .temp {
+        text-align: center;
+        height: 40%;
+
+        &__icon {
+            display: flex;
+            justify-content: center;
+            height: 50%;
+        }
+
+        &__value {
+            font-weight: 700;
+            font-size: 2em;
+        }
+
+        .city {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+    }
+
+    .details {
+        padding: 0 20px;
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 20px;
+
+        &__other {
+            display: flex;
+            justify-content: space-evenly;
+            flex-basis: 50%;
+
+            img {
+                width: 35%;
+            }
+
+            .value {
+                font-size: 25px;
+            }
+
+            .data {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    }
+}

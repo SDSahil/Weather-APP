@@ -1,0 +1,56 @@
+<!-- <h1>{{date | date:'EEE, MMMM d'}}</h1> -->
+
+<div class="container">
+    <div class="header">Weather Forecast</div>
+    <div class="body">
+        <div class="search">
+            <input type="text" placeholder="Enter your city" class="search__bar" (keyup)="handleCityInput($event)" (keydown.enter)="getWeather()" />
+            <span class="search__btn"><img src="assets/images/search.png" alt="" (click)="getWeather()"></span>
+        </div>
+        <div class="err" *ngIf="errMsg">{{ errMsg }}</div>
+        <!-- <div class="card">
+            <div class="temp">
+                <div class="temp__icon">
+                    <img src="assets/images/weather-icons/clouds.png" alt="">
+                </div>
+                <div class="temp__value">28.87&deg; C</div>
+                <div class="city">Chennai</div>
+            </div>
+            <div class="details">
+                <div class="details__other">
+                    <img src="assets/images/wind.png" alt="">
+                    <div class="data">
+                        <div class="value">15 km/h</div>
+                        <div class="label">Wind Speed</div>
+                    </div>
+                </div>
+                <div class="details__other">
+                    <img src="assets/images/humidity.png" alt="">
+                    <div class="data">
+                        <div class="value">50 %</div>
+                        <div class="label">Humidity</div>
+                    </div>
+                </div>
+
+                <div class="details__other">
+                    <img src="assets/images/pressure.png" alt="">
+                    <div class="data">
+                        <div class="value">1005 hPa</div>
+                        <div class="label">Pressure</div>
+                    </div>
+                </div>
+                <div class="details__other">
+                    <img src="assets/images/visibility.png" alt="">
+                    <div class="data">
+                        <div class="value">50 km</div>
+                        <div class="label">Visibility</div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+        <ng-container *ngIf="showWeather">
+            <app-weather-card [weatherDetails]="weatherDetail"></app-weather-card>
+        </ng-container>
+    </div>
+</div>

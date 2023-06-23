@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="temp">
+        <div class="temp__icon">
+            <img [src]="'assets/images/weather-icons/'+weatherIcon+'.png'" alt="">
+        </div>
+        <div class="temp__value">{{ weatherDetails.temp }}&deg; C</div>
+        <div class="city">{{ weatherDetails.city }}</div>
+    </div>
+    <!-- <div class="details">
+        <div class="details__other">
+            <img src="assets/images/wind.png" alt="">
+            <div class="data">
+                <div class="value">15 km/h</div>
+                <div class="label">Wind Speed</div>
+            </div>
+        </div>
+        <div class="details__other">
+            <img src="assets/images/humidity.png" alt="">
+            <div class="data">
+                <div class="value">50 %</div>
+                <div class="label">Humidity</div>
+            </div>
+        </div>
+
+        <div class="details__other">
+            <img src="assets/images/pressure.png" alt="">
+            <div class="data">
+                <div class="value">1005 hPa</div>
+                <div class="label">Pressure</div>
+            </div>
+        </div>
+        <div class="details__other">
+            <img src="assets/images/visibility.png" alt="">
+            <div class="data">
+                <div class="value">50 km</div>
+                <div class="label">Visibility</div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="details">
+        <div class="details__other" *ngFor="let option of weatherOptions">
+            <img [src]="'assets/images/'+option.icon+'.png'" alt="">
+            <div class="data">
+                <div class="value">{{ option.value }} {{ option.unit }}</div>
+                <div class="label">{{ option.label }}</div>
+            </div>
+        </div>
+    </div>
+</div>
